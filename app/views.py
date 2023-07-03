@@ -29,6 +29,16 @@ def display_webpages(request):
     webpages=Webpage.objects.filter(Q(name='sri') | Q(url='https'))
     webpages=Webpage.objects.all()
     webpages=Webpage.objects.filter(Q(name='Virat') | Q(url='https'))
+    webpages=Webpage.objects.filter(Q(name='Virat') & Q(url='https'))
+    webpages=Webpage.objects.all()
+    # webpages=Webpage.objects.filter(Q(name='Virat') & Q(url='https://virat.com'))
+    webpages=Webpage.objects.all()
+    Webpage.objects.filter(topic_name='Cricket').update(name='Kohli')
+    Webpage.objects.filter(topic_name='Football').update(name='Hanshik')
+    Webpage.objects.filter(topic_name='Football').update(name='Hanshik',url='https://hanshik.com')
+    Webpage.objects.update_or_create(topic_name='Football',defaults={'name':'Ronaldo'})
+    Webpage.objects.update_or_create(topic_name='KOKO',defaults={'name':'sinchana','url':'http://koko.com'})
+    
     d={'webpages':webpages}
     return render(request,'display_webpages.html',d)
 
@@ -42,6 +52,10 @@ def display_accessrecords(request):
     accessrecords=AccessRecord.objects.filter(date__year__gte='2000')
     accessrecords=AccessRecord.objects.filter(date__year__lt='2000')
     accessrecords=AccessRecord.objects.filter(date__year__lte='2000')
+    accessrecords=AccessRecord.objects.filter(date__year='2021')
+    accessrecords=AccessRecord.objects.filter(date__month='07')
+    accessrecords=AccessRecord.objects.filter(date__day='22')
+    
 
     
     
